@@ -2,13 +2,12 @@ body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: white;
+  background-color: rgb(105, 126, 105);
 }
 
 nav {
-  background-color: rgb(81, 81, 81);
+  background-color: rgb(50, 21, 21);
   color: white;
-  padding: 10px 0;
   display: flex;
   justify-content: flex-end;
   padding: 10px 20px;
@@ -28,4 +27,17 @@ li a {
 main {
   width: 80%;
   margin: 0 auto;
+}
+h1 {
+  color: white;
+  text-shadow: 1px 1px 2px black;
+}
+.puppyImg {
+  width:350px;
+  height: 250px;
+  border-radius: 15px;
+  border: 2px solid rgb(50, 21, 21);
+  justify-content: center;
+  display: flex;
+  margin: 30px 10px 10px 40px;
 }
