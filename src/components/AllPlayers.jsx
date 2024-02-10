@@ -1,6 +1,6 @@
 import { fetchAllPlayers } from "../API";
 import { useState, useEffect } from "react";
-import SinglePlayer from "./SinglePlayer";
+//import SinglePlayer from "./SinglePlayer";
 import { useNavigate } from "react-router-dom";
 
 const AllPlayers = () => {
@@ -25,7 +25,7 @@ const AllPlayers = () => {
             <div key={player.name}>
                 <h2>{player.name}</h2>
                 <img className="puppyImg" src={player.imageUrl} />
-                <button onClick={ () => navigate('/SinglePlayer')}> Player Details </button>
+                <button onClick={ () => navigate(`players/${player.id}`)}> Player Details </button>
             </div>
         )
       })
