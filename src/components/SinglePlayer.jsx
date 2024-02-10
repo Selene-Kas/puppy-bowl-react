@@ -1,26 +1,29 @@
-//import { fetchSinglePlayer } from '../API'
-import { useState, useEffect} from 'react';
-//import { Routes, Route, useParams } from 'react-router-dom'
+//import { useState, useEffect} from 'react';
+import React from 'react';
+import { useParams } from 'react-router-dom'
+//import { fetchSinglePlayer } from '../API';
 
 const SinglePlayer = () => {
-    const [player, setPlayer] = useState([]);
+  //const [player, setPlayer] = useState([]);
 
-    //useEffect(()=>{
-    //    async function getPlayer() {
-    //        const playerDetails = await fetchSinglePlayer()
-    //        setPlayer(playerDetails)
-    //    }
-    //    getPlayer()
-    //  }, [])
+  //useEffect(()=>{
+  //  async function getPlayerDetails() {
+  //      const playerDetails = await fetchSinglePlayer()
+  //      setPlayer(playerDetails)
+  //  }
+  //  getPlayerDetails()
+  //}, [])
+    
+    const { id }= useParams();
+    console.log(id);
 
     //fetchSinglePlayer();
-    //let {playerId} = useParams();
+    
       
     return (
       
       <div>
-          <h1>Single Player </h1>
-
+          <h1>Single Player: {id}</h1>
       </div>
     );
   }
