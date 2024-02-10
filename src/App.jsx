@@ -13,7 +13,7 @@ function App() {
             <Routes>
               <Route path="/" element={<AllPlayers />}/>
               <Route path="singlePlayer" element={<SinglePlayer/>} />
-              <Route path="/players/:id" element={<SinglePlayer />} /> 
+              <Route path="players/:id" element={<SinglePlayer />} /> 
               <Route path="newPlayerForm" element={<NewPlayerForm />}/>
             </Routes >
         </main>
