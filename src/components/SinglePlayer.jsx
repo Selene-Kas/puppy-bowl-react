@@ -1,44 +1,36 @@
 import { useState, useEffect} from 'react';
-import React from 'react';
 import { useParams } from 'react-router-dom'
-import { fetchAllPlayers } from '../API';
+import { fetchSinglePlayer } from '../API';
 
 
-//const SinglePlayer = ( ) => {
-//  const [player, setPlayer] = useState( );
-//
-//  useEffect(()=>{
-//    async function getPlayerDetails(id) {
-//        const playerDetails = await fetchSinglePlayer();
-//       setPlayer(playerDetails)
-//    }
-//    getPlayerDetails()
-//  }, [] )
-const SinglePlayer = ( ) => {
-const [players, setPlayers] = useState([]);
+const SinglePlayer = (  ) => {
+  const { id }= useParams();
+  const [player, setPlayer] = useState( );
 
-useEffect(()=>{
-  async function getPlayersList() {
-      const playersList = await fetchAllPlayers()
-      setPlayers(playersList)
+
+  useEffect(()=>{
+    async function getPlayerDetails() {
+        const playerDetails = await fetchSinglePlayer(id);
+       setPlayer(playerDetails)
+       //console.log(playerDetails)
+    }
+    getPlayerDetails()
+  }, [] )
+
+  const handleClick = () => {
+    fetch('https://fsa-puppy-bowl.herokuapp.com/api/2308-acc-et-web-pt-a/players/' + player.id, {
+      method: 'DELETE'
+    }).then(() => {
+      alert('Player was deleted with id of '+ player.id);
+    })
   }
-  getPlayersList()
-}, [])
-const { id }= useParams();
-console.log(id);
-  
-const player = players.find(player => player.id === parseInt(id));
-  
-  //console.log(player);
-  //const { name, breed } = player;
-     
+
     return (
       
       <div>
-        
-        <h1>Single Player: {id}</h1>
+        <h1>Single Player: Id of {id}</h1>
         {player ? (
-        <ul> 
+        <ul className="singlePlayer"> 
           <li>Name: {player.name}</li>
           <li>Breed: {player.breed}</li>
           <li>TeamID: {player.teamId}</li>
@@ -48,6 +40,7 @@ const player = players.find(player => player.id === parseInt(id));
           <li>CreatedAt: {player.createdAt}</li>
           <li>UpdatedAt: {player.updatedAt}</li>
           <li><img className="puppyImg" src={player.imageUrl} /></li>
+          <button onClick={handleClick}> Remove Player </button>
         </ul>
         ): (
           <div>Go back to All Players and select Player first.</div>
@@ -56,4 +49,4 @@ const player = players.find(player => player.id === parseInt(id));
     );
   }
 
-  export default SinglePlayer;
+export default SinglePlayer;
